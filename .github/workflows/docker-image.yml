@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  build-rpi-php-cli:
+  app:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -19,10 +19,10 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push rp-php-cli
+      - name: Build and push app
         uses: docker/build-push-action@v2
         with:
           push: true
-          target: rp-php-cli
+          target: app
           tags: |
             ghcr.io/${{ github.repository }}/wkhtmltopdf-service
