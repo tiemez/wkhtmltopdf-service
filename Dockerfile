@@ -12,7 +12,7 @@ WORKDIR /app/wkhtmltopodf-service/
 RUN go build -o bin/wkhtmltopodf-service
 
 FROM builder AS app
-COPY wkhtmltopodf-proxy.sh /
+COPY wkhtmltopodf-proxy.sh /usr/local/bin/wkhtmltopodf-proxy.sh
 ENTRYPOINT /app/wkhtmltopodf-service/bin/wkhtmltopodf-service
 EXPOSE 9800
 
